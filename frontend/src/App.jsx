@@ -10,6 +10,7 @@ import l3 from './assets/l3.svg';
 import r1 from './assets/r1.svg';
 import r2 from './assets/r2.svg';
 import r3 from './assets/r3.svg';
+import About from "./components/About";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -64,6 +65,7 @@ const App = () => {
           <Navigation />
           <Hero />
           <Home/>
+          <About/>
         </div>
       )}
     </div>

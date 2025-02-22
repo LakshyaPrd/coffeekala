@@ -4,7 +4,7 @@ import img2 from '../assets/pic-2.svg';
 import img3 from '../assets/pic-3.svg';
 import img4 from '../assets/pic-4.svg';
 
-const Home = () => {
+const About = () => {
   const images = [img1, img2, img3, img4];
   const containerRef = useRef(null);
 
@@ -42,22 +42,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div id="home" className="flex items-center justify-center min-h-screen py-12">
+    <section id="about" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-          {/* Text Section */}
-          <div className="w-full md:w-3/5 text-center md:text-left order-2 md:order-1">
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
-              Welcome to <span className="text-brown-600">Coffee Kala</span> – Your Cozy Retreat
-            </h2>
-            <p className="text-gray-600 mb-6 text-base md:text-lg leading-relaxed">
-              At Coffee Kala, we blend comfort with quality, creating the perfect space for coffee lovers.
-              Join us for a unique experience that warms your heart and delights your senses.
-            </p>
-          </div>
-
           {/* Image Slider Section */}
-          <div className="w-full md:w-2/5 mb-6 md:mb-0 order-1 md:order-2 relative">
+          <div className="w-full md:w-1/2 mb-6 md:mb-0 relative">
             <div className="relative w-full overflow-hidden">
               {/* Image Container */}
               <div
@@ -105,10 +94,36 @@ const Home = () => {
               &gt;
             </button>
           </div>
+
+          {/* Text Section */}
+          <div className="w-full md:w-1/2 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+              Experience the Cozy Aesthetic of <span className="text-brown-600">Coffee Kala</span>
+            </h2>
+            <p className="text-gray-600 mb-6 text-base md:text-lg leading-relaxed">
+              At Coffee Kala, we blend a warm atmosphere with exquisite coffee creations. Our space invites you to relax, unwind, and savor every sip.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-4">
+                <span className="text-brown-600 text-2xl">☕</span>
+                <h3 className="text-xl font-semibold text-neutral-900">Cozy Vibes</h3>
+              </div>
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                Immerse yourself in a tranquil environment designed for comfort and relaxation.
+              </p>
+              <div className="flex items-center gap-4">
+                <span className="text-brown-600 text-2xl">🎨</span>
+                <h3 className="text-xl font-semibold text-neutral-900">Aesthetic Appeal</h3>
+              </div>
+              <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                Every corner of Coffee Kala is thoughtfully curated to inspire and delight.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Home;
+export default About;

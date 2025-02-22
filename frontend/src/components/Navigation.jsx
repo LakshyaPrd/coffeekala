@@ -40,17 +40,17 @@ const Navigation = () => {
       </div>
 
       {/* Left Section */}
-      <div className="hidden md:flex space-x-15 pl-20">
+      <div className="hidden md:flex space-x-15 pl-20 ">
         <a href="#home" className="hover:text-pink-400">
           HOME
         </a>
         <a href="#about" className="hover:text-gray-400">
           ABOUT
         </a>
-        <a href="#" className="hover:text-gray-400">
+        <a href="#menu" className="hover:text-gray-400">
           MENU
         </a>
-        <a href="#" className="hover:text-gray-400">
+        <a href="#gallery" className="hover:text-gray-400">
           GALLERY
         </a>
       </div>
@@ -64,13 +64,13 @@ const Navigation = () => {
 
       {/* Right Section */}
       <div className="hidden md:flex space-x-15 ml-auto items-center pr-20">
-        <a href="#" className="hover:text-gray-400">
-          BLOG
+        <a href="#book" className="hover:text-gray-400">
+          BOOK
         </a>
         <a href="#" className="hover:text-gray-400">
           OFFERS
         </a>
-        <a href="#" className="hover:text-gray-400">
+        <a href="#contact" className="hover:text-gray-400">
           CONTACT
         </a>
         <FaShoppingBag className="text-2xl hover:text-gray-400" />
