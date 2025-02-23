@@ -14,25 +14,32 @@ const dbConnection = async ()=>{
 dbConnection();
 
 const userSchema = new mongoose.Schema({
-    username : {
-        type : String,
-        lowercase : true,
-        required : true,
-        unique : true
-    },
     email : {
         type : String,
         required : true,
         lowercase : true,
         unique : true
     },
+    username : {
+        type : String,
+        lowercase : true,
+        required : true,
+    },
     password : String,
     google_auth : {
         type : Boolean,
         default : false
+    },
+    coins : {
+        type: Number,
+        required : true,
+        default : 10
+
     }
 })
 
 const userModel = mongoose.model("users",userSchema);
 
-export default userModel;
+module.exports = {
+    userModel
+}
