@@ -42,22 +42,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div id="home" className="flex items-center justify-center min-h-screen py-12">
+    <div id="home" className="flex items-center justify-center min-h-screen py-20">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-          {/* Text Section */}
-          <div className="w-full md:w-3/5 text-center md:text-left order-2 md:order-1">
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-4">
-              Welcome to <span className="text-brown-600">Coffee Kala</span> – Your Cozy Retreat
-            </h2>
-            <p className="text-gray-600 mb-6 text-base md:text-lg leading-relaxed">
-              At Coffee Kala, we blend comfort with quality, creating the perfect space for coffee lovers.
-              Join us for a unique experience that warms your heart and delights your senses.
-            </p>
-          </div>
-
           {/* Image Slider Section */}
-          <div className="w-full md:w-2/5 mb-6 md:mb-0 order-1 md:order-2 relative">
+          <div className="w-full md:w-3/5 mb-6 md:mb-0 relative order-1">
             <div className="relative w-full overflow-hidden">
               {/* Image Container */}
               <div
@@ -84,7 +73,7 @@ const Home = () => {
                     key={index}
                     src={img}
                     alt={`Coffee Kala ${index + 1}`}
-                    className="rounded-2xl shadow-xl flex-none w-full h-[550px] object-cover snap-start"
+                    className="rounded-2xl shadow-xl flex-none w-full h-[498px] object-cover snap-start md:h-[650px]"
                     style={{ minWidth: '100%' }}
                   />
                 ))}
@@ -104,6 +93,18 @@ const Home = () => {
             >
               &gt;
             </button>
+          </div>
+
+          {/* Text Section */}
+          <div className="w-full md:w-2/4 text-center md:text-left order-2 bg-white p-10 rounded-lg shadow-lg relative z-10 md:-ml-20 -mt-20 md:mt-0 md:top-1.5">
+            <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 mb-6">
+              Our Story
+            </h2>
+            <p className="text-gray-600 mb-6 text-base md:text-lg leading-relaxed pt-1.5">
+              Coffee Kala is more than just a cafe; it's an aesthetic experience. We are dedicated to showcasing authenticity in every aspect, 
+              from our menu to the ambiance. 
+              Join us to savor the perfect blend of flavors and creativity.
+            </p>
           </div>
         </div>
       </div>
