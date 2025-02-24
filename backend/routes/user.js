@@ -93,6 +93,47 @@ router.post("/google-auth",async(req,res)=>{
     
 })
 
+const signinSchema = zod.object({
+    email : zod.string(),
+    password : zod.string()
+})
+
+
+router.post("/signin",async(req,res)=>{
+    const {success} = signinSchema.safeParse(req.body);
+    if(!success){
+        return res.status(411).json({
+            message : "Incorrect Inputs"
+        })
+    }
+    const user = await userModel.findOne({
+        email : req.body.email,
+        password : req.body.password
+    })
+    if(user){
+        const token = jwt.sign({
+            userId : user._id
+        },process.env.JWT_SECRET)
+        return res.json({
+            token : token
+        })
+    }
+    res.status(411).json({
+        message : "User not found"
+    })
+})
+
+router.get("/coins",authMiddleware,async(req,res)=>{
+    const user = await userModel.findOne({
+        userId : req.userId
+    })
+    return res.json({
+        coins : user.coins
+    })
+})
+
+
+
 
 
 module.exports = router;
