@@ -40,6 +40,26 @@ const userSchema = new mongoose.Schema({
 
 const userModel = mongoose.model("users",userSchema);
 
+
+const bookingSchema = new mongoose.Schema({
+    user : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "users"
+    },
+    tableNumber : {
+        type : Number,
+        required : true
+    },
+    date : {
+        type : Date,
+        required : true
+    }
+})
+
+const bookingModel = mongoose.model("bookings",bookingSchema)
+
+
 module.exports = {
-    userModel
+    userModel,
+    bookingModel
 }

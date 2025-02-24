@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {userModel} = require("../db")
+const {userModel,bookingModel} = require("../db")
 const zod = require("zod");
 const jwt = require("jsonwebtoken")
 const {authMiddleware} = require("../middleware")
@@ -132,7 +132,66 @@ router.get("/coins",authMiddleware,async(req,res)=>{
     })
 })
 
+const updateBodySchema = zod.object({
+    username : zod.string().optional(),
+    password : zod.string().optional()
+})
 
+router.put("/update",authMiddleware,async(req,res)=>{
+    const {success} = updateBodySchema.safeParse(req.body);
+    if(!success){
+        res.status(411).json({
+            message : "Error while uploading information"
+        })
+    }
+    await userModel.findOne({
+        _id : req.userId
+    },req.body);
+    res.json({
+        message : "User updated successfully"
+    })
+})
+
+router.get("/tables",authMiddleware,async(req,res)=>{
+    const bookedTables = await bookingModel.countDocuments();
+    res.json({
+        availableTables : 50 - bookedTables
+    });
+})
+
+
+router.post("/book",authMiddleware,async(req,res)=>{
+    const { tableNumber , date} = req.body;
+
+    const user = await userModel.findOne({
+        _id : req.userId 
+    })
+
+    if(!user || user.coins < 100){
+        return res.json({
+            message : "Sorry you dont have enough coins to book a table"
+        })
+    }
+
+    const existingBooking = await bookingModel.findOne({
+        tableNumber , date
+    })
+    if(existingBooking){
+        return res.status(400).json({
+            message : "Table already booked for this date."
+        })
+    }
+    const booking = await bookingModel.create({
+        user : req.userId,
+        tableNumber,
+        date
+    })
+    user.coins -= 100;
+    await user.save();
+    res.json({
+        message : "Table booked successfully",booking
+    });
+})
 
 
 
