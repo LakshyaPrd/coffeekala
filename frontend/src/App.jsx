@@ -11,7 +11,7 @@ import r3 from './assets/r3.svg';
 const Navigation = React.lazy(() => import('./components/Navigation'));
 const Hero = React.lazy(() => import('./components/Hero'));
 const Home = React.lazy(() => import('./components/Home'));
-const About = React.lazy(() => import('./components/About'));
+
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,7 +50,7 @@ const App = () => {
               <Navigation />
               <Hero />
               <Home />
-              <About />
+              
             </div>
           </Suspense>
         </>
