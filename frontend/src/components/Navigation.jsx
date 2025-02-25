@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaShoppingBag } from "react-icons/fa"; // Importing shopping bag icon
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/Logo.png";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -27,6 +28,14 @@ const Navigation = () => {
     };
   }, []);
 
+  const navigateToAbout = () => {
+    navigate('/about');
+    closeMenu();
+  };
+  const navigateToReservation=()=>{
+    navigate('/reservation');
+    closeMenu();
+  }
   return (
     <nav className="bg-[#5C3623] mt-9 mx-auto max-w-[1100px] h-12 flex items-center px-6 rounded-full text-xs text-white relative md:max-w-[1100px] md:px-4 md:h-15">
       {/* Hamburger Menu for Small Screens */}
@@ -40,13 +49,13 @@ const Navigation = () => {
       </div>
 
       {/* Left Section */}
-      <div className="hidden md:flex space-x-15 pl-20 ">
-        <a href="#home" className="hover:text-pink-400">
-          HOME
-        </a>
-        <a href="#about" className="hover:text-gray-400">
+      <div className="hidden md:flex space-x-15 pl-20">
+        <button 
+          onClick={navigateToAbout} 
+          className="hover:text-gray-400"
+        >
           ABOUT
-        </a>
+        </button>
         <a href="#menu" className="hover:text-gray-400">
           MENU
         </a>
@@ -64,16 +73,14 @@ const Navigation = () => {
 
       {/* Right Section */}
       <div className="hidden md:flex space-x-15 ml-auto items-center pr-20">
-        <a href="#book" className="hover:text-gray-400">
-          BOOK
-        </a>
-        <a href="#" className="hover:text-gray-400">
-          OFFERS
-        </a>
+        <button onClick={navigateToReservation} className="hover:text-gray-400">Reservation</button>
+        
         <a href="#contact" className="hover:text-gray-400">
           CONTACT
         </a>
-        <FaShoppingBag className="text-2xl hover:text-gray-400" />
+        <a href="#contact" className="hover:text-gray-400">
+          Login
+        </a>
       </div>
 
       {/* Mobile Dropdown Menu */}
@@ -82,12 +89,12 @@ const Navigation = () => {
           ref={menuRef}
           className="absolute top-13 left-5 w-32 bg-[#5C3623] text-white flex flex-col items-center space-y-4 py-4 rounded-b-lg md:hidden"
         >
-          <a href="#" className="hover:text-pink-400" onClick={closeMenu}>
-            HOME
-          </a>
-          <a href="#about" className="hover:text-gray-400" onClick={closeMenu}>
+          <button 
+            className="hover:text-gray-400" 
+            onClick={navigateToAbout}
+          >
             ABOUT
-          </a>
+          </button>
           <a href="#" className="hover:text-gray-400" onClick={closeMenu}>
             MENU
           </a>

@@ -168,9 +168,9 @@ const Home = () => {
                   imageSrc={product.imageSrc}
                   altText={product.name}
                   captionText={product.name}
-                  containerHeight="250px"
+                  containerHeight="450px"
                   containerWidth="100%"
-                  imageHeight="200px"
+                  imageHeight="400px"
                   imageWidth="100%"
                   rotateAmplitude={8}
                   scaleOnHover={1.1}

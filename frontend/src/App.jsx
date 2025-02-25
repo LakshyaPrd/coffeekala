@@ -1,4 +1,6 @@
 import React, { useState, useEffect, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import coffeekala from './assets/coffeekala.png';
 import coffeemug from './assets/cup.png';
 import l1 from './assets/l1.svg';
@@ -11,7 +13,8 @@ import r3 from './assets/r3.svg';
 const Navigation = React.lazy(() => import('./components/Navigation'));
 const Hero = React.lazy(() => import('./components/Hero'));
 const Home = React.lazy(() => import('./components/Home'));
-
+const About = React.lazy(() => import('./components/About'));
+const Reservation = React.lazy(() => import('./components/Reservation'));
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,10 +50,20 @@ const App = () => {
           <BackgroundEffects />
           <Suspense fallback={<div>Loading...</div>}>
             <div className="relative z-10">
-              <Navigation />
-              <Hero />
-              <Home />
-              
+              <BrowserRouter>
+                <Navigation />
+                <Routes>
+                  <Route path="/" element={
+                    <>
+                      <Hero />
+                      <Home />
+                    </>
+                  } />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/reservation" element={<Reservation/>}/>
+                  {/* Add more routes as needed */}
+                </Routes>
+              </BrowserRouter>
             </div>
           </Suspense>
         </>
