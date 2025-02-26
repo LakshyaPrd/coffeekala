@@ -4,7 +4,13 @@ import img2 from '../assets/pic-2.svg';
 import img3 from '../assets/pic-3.svg';
 import img4 from '../assets/pic-4.svg';
 import img from '../assets/pic-5.svg';
+import p1 from '../assets/person-1.png';
+import p2 from '../assets/person-2.png';
+import p3 from '../assets/person-3.png';
+import p4 from '../assets/person-4.png';
+import p5 from '../assets/person-5.png';
 import TiltedCard from '../ui/TitleCard.jsx';
+import { AnimatedTestimonials } from '../ui/AnimatedTestimonials.jsx';
 
 // Memoize TiltedCard for better performance
 const MemoizedTiltedCard = memo(TiltedCard);
@@ -16,10 +22,10 @@ const Home = () => {
   const images = [img1, img2, img3, img4];
   
   const products = [
-    { name: "Coffee Kala", price: "$85.00", imageSrc: img },
-    { name: "Coffee Kala", price: "$20.00", imageSrc: img },
-    { name: "Coffee Kala", price: "$10.00", imageSrc: img },
-    { name: "Coffee Kala", price: "$25.00", imageSrc: img },
+    { name: "Cappuccino", imageSrc: img },
+    { name: "Cold Frappe", imageSrc: img },
+    { name: "Masala Chai", imageSrc: img },
+    { name: "Tiramisu Shake", imageSrc: img },
   ];
 
   // Handle scroll
@@ -66,7 +72,43 @@ const Home = () => {
 
     return () => clearInterval(interval);
   }, [currentImageIndex, images.length, isAutoPlayEnabled]);
-
+  const testimonials = [
+    {
+      quote:
+        "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
+      name: "Lakshya Pradhan",
+      designation: "Guest",
+      src: p1,
+    },
+    {
+      quote:
+        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+      name: "Sachin Sharma",
+      designation: "Guest",
+      src: p2,
+    },
+    {
+      quote:
+        "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
+      name: "Abhijeet Gulati",
+      designation: "Guest",
+      src: p3,
+    },
+    {
+      quote:
+        "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
+      name: "Yash Bargotya",
+      designation: "Guest",
+      src: p4,
+    },
+    {
+      quote:
+        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
+      name: "Samarth Dubey",
+      designation: "Guest",
+      src: p5,
+    },
+  ];
   return (
     <div id="home" className="min-h-screen w-full py-8 sm:py-12 md:py-16 lg:py-20">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
@@ -139,7 +181,7 @@ const Home = () => {
           </div>
 
           {/* Text Section */}
-          <div className="w-full lg:w-2/5 text-center lg:text-left bg-white p-6 sm:p-8 lg:p-10 rounded-lg shadow-lg relative z-10 lg:-ml-16 -mt-10 lg:mt-0">
+          <div className="w-full lg:w-2/5 text-left lg:text-left bg-white p-6 sm:p-8 lg:p-10 rounded-lg shadow-lg relative z-10 lg:-ml-16 -mt-10 lg:mt-0">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 sm:mb-6">
               Our Story
             </h2>
@@ -156,7 +198,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 sm:mb-8">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium">Discover</h2>
               <button className="px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                Explore Now
+                Explore More
               </button>
             </div>
 
@@ -185,6 +227,14 @@ const Home = () => {
                 />
               ))}
             </div>
+
+            {/* Customer Stories Section */}
+            <div className="mt-12 sm:mt-16 lg:mt-20 text-left">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 sm:mb-8">
+                Customer Stories
+              </h2>
+            </div>
+            <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
           </div>
         </div>
       </div>
