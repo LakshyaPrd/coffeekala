@@ -3,7 +3,11 @@ import img1 from '../assets/pic-1.svg';
 import img2 from '../assets/pic-2.svg';
 import img3 from '../assets/pic-3.svg';
 import img4 from '../assets/pic-4.svg';
-import img from '../assets/pic-5.svg';
+import cappu from '../assets/cappu.png';
+import frap from '../assets/frappe.png';
+import cigar from '../assets/cigar.png';
+import mint from '../assets/mint.png';
+import straw from '../assets/strawberry.png';
 import p1 from '../assets/person-1.png';
 import p2 from '../assets/person-2.png';
 import p3 from '../assets/person-3.png';
@@ -22,10 +26,12 @@ const Home = () => {
   const images = [img1, img2, img3, img4];
   
   const products = [
-    { name: "Cappuccino", imageSrc: img },
-    { name: "Cold Frappe", imageSrc: img },
-    { name: "Masala Chai", imageSrc: img },
-    { name: "Tiramisu Shake", imageSrc: img },
+    { name: "Cappuccino", imageSrc: cappu },
+    { name: "Cold Frappe", imageSrc: frap },
+    { name: "Mint Blue Crush Mohito", imageSrc: mint },
+    {name: "Strawberry Margaritta", imageSrc: straw},
+    
+    
   ];
 
   // Handle scroll
@@ -193,7 +199,7 @@ const Home = () => {
         </div>
 
         {/* Products Section */}
-        <div className="mt-12 sm:mt-16 lg:mt-20 p-4 sm:p-6 lg:p-8">
+        <div id='menu' className="mt-12 sm:mt-16 lg:mt-20 p-4 sm:p-6 lg:p-8">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 sm:mb-8">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium">Discover</h2>
@@ -210,9 +216,9 @@ const Home = () => {
                   imageSrc={product.imageSrc}
                   altText={product.name}
                   captionText={product.name}
-                  containerHeight="450px"
+                  containerHeight="475px"
                   containerWidth="100%"
-                  imageHeight="400px"
+                  imageHeight="460px"
                   imageWidth="100%"
                   rotateAmplitude={8}
                   scaleOnHover={1.1}
@@ -229,7 +235,7 @@ const Home = () => {
             </div>
 
             {/* Customer Stories Section */}
-            <div className="mt-12 sm:mt-16 lg:mt-20 text-left">
+            <div className="mt-12 sm:mt-16 lg:mt-20 text-center">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 sm:mb-8">
                 Customer Stories
               </h2>
