@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import img1 from '../assets/pic-1.svg';
 import img2 from '../assets/pic-2.svg';
 import img3 from '../assets/pic-3.svg';
 import img4 from '../assets/pic-4.svg';
 import cappu from '../assets/cappu.png';
 import frap from '../assets/frappe.png';
-import cigar from '../assets/cigar.png';
 import mint from '../assets/mint.png';
 import straw from '../assets/strawberry.png';
 import p1 from '../assets/person-1.png';
@@ -14,25 +14,47 @@ import p3 from '../assets/person-3.png';
 import p4 from '../assets/person-4.png';
 import p5 from '../assets/person-5.png';
 import TiltedCard from '../ui/TitleCard.jsx';
-import { AnimatedTestimonials } from '../ui/AnimatedTestimonials.jsx';
+import Testimonial from '../ui/Testimonial.jsx';
 
 // Memoize TiltedCard for better performance
 const MemoizedTiltedCard = memo(TiltedCard);
+
+// Constants
+const IMAGES = [img1, img2, img3, img4];
+const PRODUCTS = [
+  { name: "Cappuccino", imageSrc: cappu },
+  { name: "Cold Frappe", imageSrc: frap },
+  { name: "Mint Blue Crush Mohito", imageSrc: mint },
+  { name: "Strawberry Margaritta", imageSrc: straw },
+];
+const TESTIMONIALS = [
+  {
+    quote: "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
+    name: "Lakshya Pradhan",
+    
+    src: p1,
+  },
+  {
+    quote: "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
+    name: "Sachin Sharma",
+    
+    src: p2,
+  },
+  {
+    quote: "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
+    name: "Abhijeet Gulati",
+    
+    src: p3,
+  },
+
+];
+const AUTO_PLAY_INTERVAL = 3000;
 
 const Home = () => {
   const [isAutoPlayEnabled, setIsAutoPlayEnabled] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const containerRef = useRef(null);
-  const images = [img1, img2, img3, img4];
-  
-  const products = [
-    { name: "Cappuccino", imageSrc: cappu },
-    { name: "Cold Frappe", imageSrc: frap },
-    { name: "Mint Blue Crush Mohito", imageSrc: mint },
-    {name: "Strawberry Margaritta", imageSrc: straw},
-    
-    
-  ];
+  const navigate = useNavigate();
 
   // Handle scroll
   const handleScroll = () => {
@@ -49,13 +71,20 @@ const Home = () => {
     if (containerRef.current) {
       const newIndex = direction === 'left' 
         ? Math.max(0, currentImageIndex - 1)
-        : Math.min(images.length - 1, currentImageIndex + 1);
+        : Math.min(IMAGES.length - 1, currentImageIndex + 1);
       
+      scrollToIndex(newIndex);
+    }
+  };
+
+  // Scroll to specific index
+  const scrollToIndex = (index) => {
+    if (containerRef.current) {
       containerRef.current.scrollTo({
-        left: newIndex * containerRef.current.clientWidth,
+        left: index * containerRef.current.clientWidth,
         behavior: 'smooth'
       });
-      setCurrentImageIndex(newIndex);
+      setCurrentImageIndex(index);
     }
   };
 
@@ -65,59 +94,20 @@ const Home = () => {
 
     const interval = setInterval(() => {
       if (containerRef.current) {
-        const isLastImage = currentImageIndex === images.length - 1;
+        const isLastImage = currentImageIndex === IMAGES.length - 1;
         const newIndex = isLastImage ? 0 : currentImageIndex + 1;
         
-        containerRef.current.scrollTo({
-          left: newIndex * containerRef.current.clientWidth,
-          behavior: 'smooth'
-        });
-        setCurrentImageIndex(newIndex);
+        scrollToIndex(newIndex);
       }
-    }, 3000);
-
+    }, AUTO_PLAY_INTERVAL);
+    
     return () => clearInterval(interval);
-  }, [currentImageIndex, images.length, isAutoPlayEnabled]);
-  const testimonials = [
-    {
-      quote:
-        "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
-      name: "Lakshya Pradhan",
-      designation: "Guest",
-      src: p1,
-    },
-    {
-      quote:
-        "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
-      name: "Sachin Sharma",
-      designation: "Guest",
-      src: p2,
-    },
-    {
-      quote:
-        "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
-      name: "Abhijeet Gulati",
-      designation: "Guest",
-      src: p3,
-    },
-    {
-      quote:
-        "Outstanding support and robust features. It's rare to find a product that delivers on all its promises.",
-      name: "Yash Bargotya",
-      designation: "Guest",
-      src: p4,
-    },
-    {
-      quote:
-        "The scalability and performance have been game-changing for our organization. Highly recommend to any growing business.",
-      name: "Samarth Dubey",
-      designation: "Guest",
-      src: p5,
-    },
-  ];
+  }, [currentImageIndex, isAutoPlayEnabled]);
+
   return (
     <div id="home" className="min-h-screen w-full py-8 sm:py-12 md:py-16 lg:py-20">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+        {/* Hero Section with Slider and Text */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12">
           {/* Image Slider */}
           <div className="w-full lg:w-3/5 relative">
@@ -137,7 +127,7 @@ const Home = () => {
                   WebkitOverflowScrolling: 'touch',
                 }}
               >
-                {images.map((img, index) => (
+                {IMAGES.map((img, index) => (
                   <img
                     key={index}
                     src={img}
@@ -151,19 +141,14 @@ const Home = () => {
 
               {/* Navigation dots */}
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-                {images.map((_, index) => (
+                {IMAGES.map((_, index) => (
                   <button
                     key={index}
                     className={`w-2 h-2 rounded-full transition-all ${
                       currentImageIndex === index ? 'bg-white scale-125' : 'bg-white/50'
                     }`}
-                    onClick={() => {
-                      containerRef.current?.scrollTo({
-                        left: index * containerRef.current.clientWidth,
-                        behavior: 'smooth'
-                      });
-                      setCurrentImageIndex(index);
-                    }}
+                    onClick={() => scrollToIndex(index)}
+                    aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
               </div>
@@ -187,7 +172,7 @@ const Home = () => {
           </div>
 
           {/* Text Section */}
-          <div className="w-full lg:w-2/5 text-left lg:text-left bg-white p-6 sm:p-8 lg:p-10 rounded-lg shadow-lg relative z-10 lg:-ml-16 -mt-10 lg:mt-0">
+          <div className="w-full lg:w-2/5 text-left bg-white p-6 sm:p-8 lg:p-10 rounded-lg shadow-lg relative z-10 lg:-ml-16 -mt-10 lg:mt-0">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 sm:mb-6">
               Our Story
             </h2>
@@ -199,17 +184,21 @@ const Home = () => {
         </div>
 
         {/* Products Section */}
-        <div id='menu' className="mt-12 sm:mt-16 lg:mt-20 p-4 sm:p-6 lg:p-8">
+        <div id="menu" className="mt-12 sm:mt-16 lg:mt-20 p-4 sm:p-6 lg:p-8">
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 sm:mb-8">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium">Discover</h2>
-              <button className="px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              <button 
+                onClick={() => navigate('/menu')}
+                className="px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              >
                 Explore More
               </button>
             </div>
+            <h2 className="text-xl sm:text-xl lg:text-2xl font-light">Best Sellers</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-20">
-              {products.map((product, index) => (
+              {PRODUCTS.map((product, index) => (
                 <MemoizedTiltedCard
                   key={index}
                   className="mx-auto sm:mx-0"
@@ -227,7 +216,7 @@ const Home = () => {
                   displayOverlayContent={true}
                   overlayContent={
                     <p className="tilted-card-demo-text">
-                      {product.name} - {product.price}
+                      {product.name}
                     </p>
                   }
                 />
@@ -235,12 +224,22 @@ const Home = () => {
             </div>
 
             {/* Customer Stories Section */}
-            <div className="mt-12 sm:mt-16 lg:mt-20 text-center">
+           {/* Customer Stories Section */}
+            <div className="mt-20 sm:mt-28 lg:mt-36 text-center"> {/* Increased margin-top */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 sm:mb-8">
                 Customer Stories
               </h2>
+              <div className="flex flex-wrap justify-center mt-8">
+                {TESTIMONIALS.map((testimonial, index) => (
+                  <Testimonial
+                    key={index}
+                    quote={testimonial.quote}
+                    name={testimonial.name}
+                    src={testimonial.src}
+                  />
+                ))}
+              </div>
             </div>
-            <AnimatedTestimonials testimonials={testimonials} autoplay={true} />
           </div>
         </div>
       </div>

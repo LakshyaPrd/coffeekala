@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MantineProvider } from '@mantine/core'; // Import MantineProvider
 
 import coffeekala from './assets/coffeekala.png';
 import coffeemug from './assets/cup.png';
@@ -15,6 +16,7 @@ const Hero = React.lazy(() => import('./components/Hero'));
 const Home = React.lazy(() => import('./components/Home'));
 const About = React.lazy(() => import('./components/About'));
 const Reservation = React.lazy(() => import('./components/Reservation'));
+const Menu = React.lazy(() => import('./components/Menu'));
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -50,20 +52,25 @@ const App = () => {
           <BackgroundEffects />
           <Suspense fallback={<div>Loading...</div>}>
             <div className="relative z-10">
-              <BrowserRouter>
-                <Navigation />
-                <Routes>
-                  <Route path="/" element={
-                    <>
-                      <Hero />
-                      <Home />
-                    </>
-                  } />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/reservation" element={<Reservation/>}/>
-                  {/* Add more routes as needed */}
-                </Routes>
-              </BrowserRouter>
+              <MantineProvider> {/* Wrap with MantineProvider */}
+                <BrowserRouter>
+                  <Navigation />
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={
+                        <>
+                          <Hero />
+                          <Home />
+                        </>
+                      }
+                    />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/reservation" element={<Reservation />} />
+                    <Route path="/menu" element={<Menu />} />
+                  </Routes>
+                </BrowserRouter>
+              </MantineProvider>
             </div>
           </Suspense>
         </>
