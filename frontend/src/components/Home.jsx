@@ -24,7 +24,7 @@ const IMAGES = [img1, img2, img3, img4];
 const PRODUCTS = [
   { name: "Cappuccino", imageSrc: cappu },
   { name: "Cold Frappe", imageSrc: frap },
-  { name: "Mint Blue Crush Mohito", imageSrc: mint },
+  { name: "Mint Blue Crush Mojito", imageSrc: mint },
   { name: "Strawberry Margaritta", imageSrc: straw },
 ];
 const TESTIMONIALS = [

@@ -73,11 +73,9 @@ const Navigation = () => {
 
       {/* Right Section */}
       <div className="hidden md:flex space-x-15 ml-auto items-center pr-20">
-        <button onClick={navigateToReservation} className="hover:text-gray-400">Reservation</button>
+        <button onClick={navigateToReservation} className="hover:text-gray-400">RESERVATION</button>
         
-        <a href="#contact" className="hover:text-gray-400">
-          CONTACT
-        </a>
+        
         <a href="#contact" className="hover:text-gray-400">
           Login
         </a>
@@ -101,15 +99,11 @@ const Navigation = () => {
           <a href="#" className="hover:text-gray-400" onClick={closeMenu}>
             GALLERY
           </a>
-          <a href="#" className="hover:text-gray-400" onClick={closeMenu}>
-            BLOG
-          </a>
+          <button onClick={navigateToReservation} className="hover:text-gray-400">RESERVATION</button>
           <a href="#" className="hover:text-gray-400" onClick={closeMenu}>
             OFFERS
           </a>
-          <a href="#" className="hover:text-gray-400" onClick={closeMenu}>
-            CONTACT
-          </a>
+          
         </div>
       )}
     </nav>
