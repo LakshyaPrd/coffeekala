@@ -15,7 +15,7 @@ import p4 from '../assets/person-4.png';
 import p5 from '../assets/person-5.png';
 import TiltedCard from '../ui/TitleCard.jsx';
 import Testimonial from '../ui/Testimonial.jsx';
-
+import ContactUs from './ContactUs.jsx';
 // Memoize TiltedCard for better performance
 const MemoizedTiltedCard = memo(TiltedCard);
 
@@ -197,7 +197,7 @@ const Home = () => {
             </div>
             <h2 className="text-xl sm:text-xl lg:text-2xl font-light">Best Sellers</h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-20 lg:mt-4">
               {PRODUCTS.map((product, index) => (
                 <MemoizedTiltedCard
                   key={index}
@@ -225,7 +225,7 @@ const Home = () => {
 
             {/* Customer Stories Section */}
            {/* Customer Stories Section */}
-            <div className="mt-20 sm:mt-28 lg:mt-36 text-center"> {/* Increased margin-top */}
+            <div className="mt-20 sm:mt-28 lg:mt-36 text-center lg:mb-20"> {/* Increased margin-top */}
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 sm:mb-8">
                 Customer Stories
               </h2>
@@ -240,6 +240,10 @@ const Home = () => {
                 ))}
               </div>
             </div>
+            <div className='mt-28'>
+              <ContactUs/>
+            </div>
+            
           </div>
         </div>
       </div>

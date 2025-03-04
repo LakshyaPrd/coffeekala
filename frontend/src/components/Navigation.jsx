@@ -36,8 +36,12 @@ const Navigation = () => {
     navigate('/reservation');
     closeMenu();
   }
+  const navigateToHome=()=>{
+    navigate('/home');
+    closeMenu();
+  }
   return (
-    <nav className="bg-[#5C3623] mt-9 mx-auto max-w-[1100px] h-12 flex items-center px-6 rounded-full text-xs text-white relative md:max-w-[1100px] md:px-4 md:h-15">
+    <nav className="bg-[#5C3623] mt-9 mx-4 sm:mx-6 md:mx-auto h-12 flex items-center px-4 sm:px-6 rounded-full text-xs text-white relative w-auto md:max-w-[1100px] md:h-15">
       {/* Hamburger Menu for Small Screens */}
       <div className="md:hidden flex items-center">
         <button
@@ -67,7 +71,7 @@ const Navigation = () => {
       {/* Center Section with Logo */}
       <div className="absolute left-1/2 transform -translate-x-1/2">
         <div className="bg-white p-2 rounded-lg">
-          <img src={logo} alt="Logo" className="rounded-2xl h-15 w-10 md:h-22 md:w-15" />
+          <img src={logo} onClick={navigateToHome} alt="Logo" className="rounded-2xl h-15 w-10 md:h-22 md:w-15" />
         </div>
       </div>
 

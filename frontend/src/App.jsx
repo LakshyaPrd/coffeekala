@@ -68,6 +68,7 @@ const App = () => {
                     <Route path="/about" element={<About />} />
                     <Route path="/reservation" element={<Reservation />} />
                     <Route path="/menu" element={<Menu />} />
+                    <Route path="/home" element={<Home/>}/>
                   </Routes>
                 </BrowserRouter>
               </MantineProvider>
