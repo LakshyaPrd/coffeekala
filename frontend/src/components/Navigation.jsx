@@ -60,9 +60,9 @@ const Navigation = () => {
         >
           ABOUT
         </button>
-        <a href="#menu" className="hover:text-gray-400">
+        <button className="hover:text-gray-400" onClick={() => navigate('/menu')}>
           MENU
-        </a>
+        </button>
         <a href="#gallery" className="hover:text-gray-400">
           GALLERY
         </a>

@@ -1,16 +1,11 @@
 import React, { useState } from "react";
+import { FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
 
 const ContactUs = () => {
-  // State to manage the visibility of the "Visit Us" details
-  const [showDetails, setShowDetails] = useState(false);
 
-  // Function to toggle the visibility of the details
-  const toggleDetails = () => {
-    setShowDetails(!showDetails);
-  };
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className=" py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto p-8">
         {/* Grid Container */}
         <div className="flex flex-col lg:flex-row gap-16">
@@ -18,129 +13,71 @@ const ContactUs = () => {
           <div className="lg:w-1/2 space-y-8">
             {/* Get in Touch Section */}
             <div>
-              <h1 className="text-4xl font-bold text-gray-800 mb-4 lg:mt-4">
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 lg:mt-4 max-md:text-2xl">
                 Get in Touch with Us
               </h1>
-              <p className="text-lg text-gray-600">
-                Have a question or feedback? We'd love to hear from you! Reach out to us via phone or email, or visit us at our cafe in Jalpur for a memorable experience.
-              </p>
-            </div>
-
-            {/* Visit Us Section */}
-            <div className="rounded-lg">
-              <button
-                className=" bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                onClick={toggleDetails}
-              >
-                Visit Us
-              </button>
-              {showDetails && (
-                <div className="space-y-4 lg:mt-6 max-md:mt-6">
-                  
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-700">Address</h3>
-                    <p className="text-gray-600">
-                        86, New Sanganer Rd,<br />
-                        Saraswati Enclave, Mansarovar,<br />
-                        Jaipur, Rajasthan 
-                    </p>
-                  </div>
-
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-700">Call</h3>
-                    <p className="text-gray-600">+91 99292 49696</p>
-                  </div>
-
-                  <div>
+                <div>
+                    <h3 className="text-lg font-medium text-gray-700 lg:mt-10 ">Call</h3>
+                    <p className="text-gray-600 lg:mb-8">+91 99292 49696</p>
+                </div>
+                <div>
                     <h3 className="text-lg font-medium text-gray-700">Email</h3>
                     <p className="text-gray-600">coffeekalainfo@gmail.com</p>
                   </div>
-                </div>
-              )}
             </div>
           </div>
 
-          <div className="lg:w-1/2">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">
-              Contact Us
-            </h2>
-            <form>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    id="first-name"
-                    name="first-name"
-                    className="mt-1 block  px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="First Name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    id="last-name"
-                    name="last-name"
-                    className="mt-1 block  px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Last Name"
-                  />
-                </div>
-              </div>
+          <div className="lg:w-1/2 flex flex-col sm:flex-row gap-8 sm:gap-16">
+            {/* Company Section */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Company</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-500 hover:text-gray-700">About Us</a></li>
+                <li><a href="#" className="text-gray-500 hover:text-gray-700">Media</a></li>
+                <li><a href="#" className="text-gray-500 hover:text-gray-700">Cafe Locations</a></li>
+                <li><a href="#" className="text-gray-500 hover:text-gray-700">Brew Guide</a></li>
+                <li><a href="#" className="text-gray-500 hover:text-gray-700">Contact us</a></li>
+              </ul>
+            </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    className="mt-1 block  px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Email"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    className="mt-1 block  px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                    placeholder="Phone"
-                  />
-                </div>
-              </div>
+            {/* Our Policies Section */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Our Policies</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-500 hover:text-gray-700">TERMS & CONDITIONS</a></li>
+                <li><a href="#" className="text-gray-500 hover:text-gray-700">PRIVACY POLICY</a></li>
+                <li><a href="#" className="text-gray-500 hover:text-gray-700">SHIPPING POLICY</a></li>
+                <li><a href="#" className="text-gray-500 hover:text-gray-700">RETURN POLICY</a></li>
+              </ul>
+            </div>
 
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  className="mt-1 w-full block px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                  placeholder="Your message..."
-                  required
-                ></textarea>
+            {/* Follow Us Section */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Follow us:</h3>
+              <div className="flex space-x-4">
+                <a
+                  href="#"
+                  className="text-gray-500 hover:text-gray-700"
+                  onClick={(event) => event.preventDefault()}
+                >
+                  <FaTwitter size={18} />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-500 hover:text-gray-700"
+                  onClick={(event) => event.preventDefault()}
+                >
+                  <FaYoutube size={18} />
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-500 hover:text-gray-700"
+                  onClick={(event) => event.preventDefault()}
+                >
+                  <FaInstagram size={18} />
+                </a>
               </div>
-
-              <button
-                type="submit"
-                className=" bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                Submit
-              </button>
-            </form>
+            </div>
           </div>
         </div>
       </div>

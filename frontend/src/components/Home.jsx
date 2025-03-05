@@ -11,11 +11,10 @@ import straw from '../assets/strawberry.png';
 import p1 from '../assets/person-1.png';
 import p2 from '../assets/person-2.png';
 import p3 from '../assets/person-3.png';
-import p4 from '../assets/person-4.png';
-import p5 from '../assets/person-5.png';
 import TiltedCard from '../ui/TitleCard.jsx';
 import Testimonial from '../ui/Testimonial.jsx';
 import ContactUs from './ContactUs.jsx';
+
 // Memoize TiltedCard for better performance
 const MemoizedTiltedCard = memo(TiltedCard);
 
@@ -31,23 +30,20 @@ const TESTIMONIALS = [
   {
     quote: "The attention to detail and innovative features have completely transformed our workflow. This is exactly what we've been looking for.",
     name: "Lakshya Pradhan",
-    
     src: p1,
   },
   {
     quote: "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
     name: "Sachin Sharma",
-    
     src: p2,
   },
   {
     quote: "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
     name: "Abhijeet Gulati",
-    
     src: p3,
   },
-
 ];
+
 const AUTO_PLAY_INTERVAL = 3000;
 
 const Home = () => {
@@ -105,8 +101,8 @@ const Home = () => {
   }, [currentImageIndex, isAutoPlayEnabled]);
 
   return (
-    <div id="home" className="min-h-screen w-full py-8 sm:py-12 md:py-16 lg:py-20">
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+    <div id="home" className="flex flex-col min-h-screen w-full py-8 sm:py-12 md:py-16 lg:py-20">
+      <div className="container mx-auto px-4 lg:px-8 max-w-7xl flex-grow">
         {/* Hero Section with Slider and Text */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12">
           {/* Image Slider */}
@@ -224,8 +220,7 @@ const Home = () => {
             </div>
 
             {/* Customer Stories Section */}
-           {/* Customer Stories Section */}
-            <div className="mt-20 sm:mt-28 lg:mt-36 text-center lg:mb-20"> {/* Increased margin-top */}
+            <div className="mt-20 sm:mt-28 lg:mt-36 text-center"> 
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 sm:mb-8">
                 Customer Stories
               </h2>
@@ -240,10 +235,11 @@ const Home = () => {
                 ))}
               </div>
             </div>
-            <div className='mt-28'>
+
+            {/* Contact Us Section */}
+            <div className='mt-16 sm:mt-20 lg:mt-24'>
               <ContactUs/>
             </div>
-            
           </div>
         </div>
       </div>

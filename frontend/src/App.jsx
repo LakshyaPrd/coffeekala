@@ -1,7 +1,8 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { MantineProvider } from '@mantine/core'; // Import MantineProvider
+import { MantineProvider } from '@mantine/core';
 
+// Preload images
 import coffeekala from './assets/coffeekala.png';
 import coffeemug from './assets/cup.png';
 import l1 from './assets/l1.svg';
@@ -23,36 +24,53 @@ const App = () => {
 
   useEffect(() => {
     const images = [coffeekala, coffeemug, l1, l2, l3, r1, r2, r3];
+    
     const loadImages = images.map((src) => {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         const img = new Image();
         img.src = src;
-        img.onload = resolve;
-        img.onerror = reject;
+        img.onload = () => resolve(src);
+        img.onerror = () => {
+          console.warn(`Failed to load image: ${src}`);
+          resolve(src);
+        };
       });
     });
 
-    Promise.all(loadImages)
-      .then(() => setIsLoading(false))
-      .catch(() => setIsLoading(false))
-      .finally(() => setIsLoading(false));
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
 
-    const timer = setTimeout(() => setIsLoading(false), 3000);
-    return () => clearTimeout(timer);
+    Promise.all(loadImages)
+      .then(() => {
+        clearTimeout(loadingTimeout);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        clearTimeout(loadingTimeout);
+        setIsLoading(false);
+      });
+
+    return () => {
+      clearTimeout(loadingTimeout);
+    };
   }, []);
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-[#f3e8e1] to-[#fff] overflow-hidden">
       {isLoading ? (
-        <div className="absolute inset-0 flex items-center justify-center bg-white">
-          <div className="animate-spin h-12 w-12 border-4 border-t-transparent border-gray-600 rounded-full" aria-label="Loading"></div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
+          <div 
+            className="h-12 w-12 border-4 border-gray-600 rounded-full" 
+            aria-label="Loading"
+          ></div>
         </div>
       ) : (
         <>
           <BackgroundEffects />
           <Suspense fallback={<div>Loading...</div>}>
             <div className="relative z-10">
-              <MantineProvider> {/* Wrap with MantineProvider */}
+              <MantineProvider>
                 <BrowserRouter>
                   <Navigation />
                   <Routes>
