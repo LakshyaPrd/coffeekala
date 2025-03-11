@@ -1,6 +1,6 @@
 import React from 'react';
 import img1 from '../assets/pic-1.svg';
-
+import ContactUs from './ContactUs';
 const About = () => {
   return (
     <section id="about" className="py-16">
@@ -62,6 +62,9 @@ const About = () => {
             </p>
           </div>
         </div>
+        <div className='mt-16 sm:mt-20 lg:mt-24'>
+          <ContactUs/>
+         </div>
       </div>
     </section>
   );

@@ -62,8 +62,10 @@ const App = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
           <div 
             className="h-12 w-12 border-4 border-gray-600 rounded-full" 
-            aria-label="Loading"
-          ></div>
+            aria-label="loading"
+          >
+          </div>
+          
         </div>
       ) : (
         <>
@@ -80,6 +82,7 @@ const App = () => {
                         <>
                           <Hero />
                           <Home />
+                          
                         </>
                       }
                     />

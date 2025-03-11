@@ -77,11 +77,12 @@ const Navigation = () => {
 
       {/* Right Section */}
       <div className="hidden md:flex space-x-15 ml-auto items-center pr-20">
+      <button onClick={navigateToReservation} className="hover:text-gray-400">REVIEWS</button>
         <button onClick={navigateToReservation} className="hover:text-gray-400">RESERVATION</button>
         
         
         <a href="#contact" className="hover:text-gray-400">
-          Login
+          LOGIN
         </a>
       </div>
 

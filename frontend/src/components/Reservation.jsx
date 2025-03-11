@@ -1,6 +1,6 @@
 import React from 'react';
 import img1 from '../assets/cappu.png';
-
+import ContactUs from './ContactUs';
 const Reservation = () => {
   return (
     <div className='mt-6 py-8 md:py-16 px-4 sm:px-6 lg:px-8'>
@@ -8,7 +8,7 @@ const Reservation = () => {
       {/* Hero Section */}
       <div className='flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12'>
         <div className='flex-1 text-left lg:pt-24'>
-          <h1 className='text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6'>Book Your Table Now</h1>
+          <h1 className='text-3xl sm:text-4xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-900 bg-clip-text text-transparent'>Book Your Table Now</h1>
           <p className='text-base md:text-lg lg:text-xl mb-4 md:mb-6'>
             Experience the perfect blend of flavors and aesthetics at Coffee.
           </p>
@@ -30,14 +30,14 @@ const Reservation = () => {
         <div className="mt-12 md:mt-16 mb-8 md:mb-12 flex flex-col lg:flex-row gap-8 lg:gap-12">
           {/* Guidelines on the left */}
           <div className="w-full lg:w-1/3 mb-8 lg:mb-0">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">Reservation Guidelines</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-amber-800 via-amber-700 to-amber-900 bg-clip-text text-transparent">Reservation Guidelines</h2>
             <p className="text-base md:text-lg mb-6 md:mb-8">
               To ensure a seamless experience, kindly adhere to our reservation policy. We
               recommend booking in advance to secure your table. Please review our
               terms and conditions before confirming your reservation.
             </p>
             <button className="px-5 py-2 md:px-6 md:py-3 border border-gray-800 rounded-full text-base md:text-lg font-medium hover:bg-gray-100 transition-colors">
-              Learn More
+              Book Now
             </button>
           </div>
           
@@ -107,6 +107,9 @@ const Reservation = () => {
               </button>
             </div>
           </div>
+        </div>
+        <div className='mt-16 sm:mt-20 lg:mt-24'>
+          <ContactUs/>
         </div>
       </div>
     </div>

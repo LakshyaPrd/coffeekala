@@ -101,7 +101,7 @@ const Home = () => {
   }, [currentImageIndex, isAutoPlayEnabled]);
 
   return (
-    <div id="home" className="flex flex-col min-h-screen w-full py-8 sm:py-12 md:py-16 lg:py-20">
+    <div id="home" className="flex flex-col min-h-screen w-full mt-20">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl flex-grow">
         {/* Hero Section with Slider and Text */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12">
@@ -168,8 +168,8 @@ const Home = () => {
           </div>
 
           {/* Text Section */}
-          <div className="w-full lg:w-2/5 text-left bg-white p-6 sm:p-8 lg:p-10 rounded-lg shadow-lg relative z-10 lg:-ml-16 -mt-10 lg:mt-0">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 sm:mb-6">
+          <div className="w-full lg:w-2/5 text-left bg-white p-6 sm:p-8 lg:p-10 rounded-lg shadow-lg relative z-10 lg:-ml-16 -mt-10 lg:mt-0 max-md:mt-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 sm:mb-6 ">
               Our Story
             </h2>
             <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed">
@@ -182,11 +182,11 @@ const Home = () => {
         {/* Products Section */}
         <div id="menu" className="mt-12 sm:mt-16 lg:mt-20 p-4 sm:p-6 lg:p-8">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row items-left justify-between gap-4 mb-6 sm:mb-8">
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium">Discover</h2>
               <button 
                 onClick={() => navigate('/menu')}
-                className="px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                className="px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors max-md:w-[150px]"
               >
                 Explore More
               </button>
@@ -220,8 +220,8 @@ const Home = () => {
             </div>
 
             {/* Customer Stories Section */}
-            <div className="mt-20 sm:mt-28 lg:mt-36 text-center"> 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 sm:mb-8">
+            <div className="mt-20 sm:mt-28 lg:mt-36 text-center "> 
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 sm:mb-8 ">
                 Customer Stories
               </h2>
               <div className="flex flex-wrap justify-center mt-8">
