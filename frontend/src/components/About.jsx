@@ -22,7 +22,7 @@ const About = () => {
             <h1 className="text-3xl md:text-5xl font-medium bg-gradient-to-r from-amber-800 via-amber-700 to-amber-900 bg-clip-text text-transparent ">
               The Coffee Kala
             </h1>
-            <h1 className="text-3xl md:text-5xl font-medium bg-gradient-to-r from-amber-800 via-amber-700 to-amber-900 bg-clip-text text-transparent mb-8">
+            <h1 className="text-5xl font-medium bg-gradient-to-r from-amber-800 via-amber-700 to-amber-900 bg-clip-text text-transparent mb-8">
               Journey
             </h1>
 

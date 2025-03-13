@@ -46,13 +46,13 @@ export function ExpandableCardDemo() {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-[60vh] md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden p-6"
+              className="w-full max-w-[500px] h-[60vh] max-md:h-[40vh] md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-[#6F4E37] sm:rounded-3xl overflow-hidden p-6"
             >
               {/* Card content without the image */}
               <div>
                 <motion.h3
                   layoutId={`title-${active.title}-${id}`}
-                  className="font-bold text-neutral-700 dark:text-neutral-200"
+                  className="font-bold text-neutral-700 dark:text-[#C2B280] text-2xl"
                 >
                   {active.title}
                 </motion.h3>
@@ -65,7 +65,7 @@ export function ExpandableCardDemo() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="text-neutral-600 text-xs md:text-sm lg:text-base flex flex-col items-start gap-4 dark:text-neutral-400"
+                  className="text-neutral-600 text-xs md:text-sm lg:text-base flex flex-col items-start gap-4 dark:text-[#C2B280] dark:font-bold"
                 >
                   {typeof active.content === "function"
                     ? active.content() // This will render the content in a column
@@ -98,7 +98,7 @@ export function ExpandableCardDemo() {
               key={`card-${card.title}-${id}`}
               onClick={() => setActive(card)} // Set the active card on click
               className={cn(
-                "flex-shrink-0 w-full p-4 flex flex-col justify-between items-center bg-neutral-800 rounded-xl cursor-pointer",
+                "flex-shrink-0 w-full p-4 flex flex-col justify-between items-center bg-[#6F4E37] rounded-xl cursor-pointer",
                 active === card && "bg-blue-100"
               )}
             >

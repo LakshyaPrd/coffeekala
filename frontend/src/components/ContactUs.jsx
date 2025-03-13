@@ -19,7 +19,7 @@ const ContactUs = () => {
                 </h1>
                 <div>
                   <h3 className="text-lg font-medium text-gray-700 lg:mt-10">Call</h3>
-                  <p className="text-gray-600 lg:mb-8">+91 99292 49696</p>
+                  <p className="text-gray-600 lg:mb-8 font-sans">+91 99292 49696</p>
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-gray-700">Email</h3>
@@ -46,7 +46,7 @@ const ContactUs = () => {
                   </li>
                   <li>
                     <button
-                      onClick={() => window.open("https://g.co/kgs/z7QMaiZ", "_blank")}
+                      onClick={() => window.open("https://maps.app.goo.gl/9FX5v7SMFYoXG9Uy5", "_blank")}
                       className="text-gray-500 hover:text-gray-700"
                     >
                       Cafe Location
