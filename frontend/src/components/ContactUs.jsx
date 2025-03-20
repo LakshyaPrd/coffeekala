@@ -85,7 +85,7 @@ const ContactUs = () => {
               {/* Follow Us Section */}
               <div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">Follow us:</h3>
-                <div className="flex justify-center">
+                <div className="">
                   <a
                     href="https://www.instagram.com/coffeekalajaipur/"
                     className="text-gray-500 hover:text-gray-700"

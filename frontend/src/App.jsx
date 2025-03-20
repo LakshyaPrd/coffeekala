@@ -16,7 +16,8 @@ const Navigation = React.lazy(() => import('./components/Navigation'));
 const Hero = React.lazy(() => import('./components/Hero'));
 const Home = React.lazy(() => import('./components/Home'));
 const About = React.lazy(() => import('./components/About'));
-const Reservation = React.lazy(() => import('./components/Reservation'));
+const Reviews =React.lazy(()=> import('./components/Reviews'));
+const Gallery = React.lazy(()=>import('./components/Gallery'));
 const Menu = React.lazy(() => import('./components/Menu'));
 
 const App = () => {
@@ -87,7 +88,8 @@ const App = () => {
                       }
                     />
                     <Route path="/about" element={<About />} />
-                    <Route path="/reservation" element={<Reservation />} />
+                    <Route path="/gallery" element={<Gallery/>}/>
+                    <Route path="/reviews" element={<Reviews/>}/>
                     <Route path="/menu" element={<Menu />} />
                     <Route path="/home" element={<Home/>}/>
                   </Routes>

@@ -40,6 +40,18 @@ const Navigation = () => {
     navigate('/home');
     closeMenu();
   }
+  const naviagteToGallery=()=>{
+    navigate('/gallery');
+    closeMenu();
+  }
+  const navigateToReviews=()=>{
+    navigate('/reviews');
+    closeMenu();
+  }
+  const navigateToHero=()=>{
+    navigate('/');
+    closeMenu();
+  }
   return (
     <nav className="bg-[#5C3623] mt-9 mx-4 sm:mx-6 md:mx-auto h-12 flex items-center px-4 sm:px-6 rounded-full text-xs text-white relative w-auto md:max-w-[1100px] md:h-15">
       {/* Hamburger Menu for Small Screens */}
@@ -54,6 +66,12 @@ const Navigation = () => {
 
       {/* Left Section */}
       <div className="hidden md:flex space-x-15 pl-20">
+      <button 
+          onClick={navigateToHome} 
+          className="hover:text-gray-400"
+        >
+          HOME
+        </button>
         <button 
           onClick={navigateToAbout} 
           className="hover:text-gray-400"
@@ -63,26 +81,27 @@ const Navigation = () => {
         <button className="hover:text-gray-400" onClick={() => navigate('/menu')}>
           MENU
         </button>
-        <a href="#gallery" className="hover:text-gray-400">
-          GALLERY
-        </a>
+        
       </div>
 
       {/* Center Section with Logo */}
       <div className="absolute left-1/2 transform -translate-x-1/2">
         <div className="bg-white p-2 rounded-lg">
-          <img src={logo} onClick={navigateToHome} alt="Logo" className="rounded-2xl h-15 w-10 md:h-22 md:w-15" />
+          <img src={logo} onClick={navigateToHero} alt="Logo" className="rounded-2xl h-15 w-10 md:h-22 md:w-15" />
         </div>
       </div>
 
       {/* Right Section */}
       <div className="hidden md:flex space-x-15 ml-auto items-center pr-20">
-      <button onClick={navigateToReservation} className="hover:text-gray-400">REVIEWS</button>
-        <button onClick={navigateToReservation} className="hover:text-gray-400">RESERVATION</button>
+        <button onClick={naviagteToGallery} className="hover:text-gray-400">
+          GALLERY
+        </button>
+      <button onClick={navigateToReviews} className="hover:text-gray-400">REVIEWS</button>
+      
         
         
         <a href="#contact" className="hover:text-gray-400">
-          LOGIN
+          CONTACT US
         </a>
       </div>
 
