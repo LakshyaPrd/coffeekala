@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import img1 from '../assets/pic-1.svg';
 import img2 from '../assets/pic-2.svg';
 import img3 from '../assets/pic-3.svg';
@@ -45,6 +46,80 @@ const TESTIMONIALS = [
 ];
 
 const AUTO_PLAY_INTERVAL = 3000;
+
+// Define animation variants
+const fadeInVariant = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1, 
+    transition: { 
+      duration: 0.5,
+      ease: "easeOut" 
+    } 
+  }
+};
+
+// Left-side animation variant
+const slideInLeftVariant = {
+  hidden: { opacity: 0, x: -100 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { 
+      duration: 0.7,
+      ease: "easeOut" 
+    } 
+  }
+};
+
+// Right-side animation variant
+const slideInRightVariant = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { 
+      duration: 0.7,
+      ease: "easeOut" 
+    } 
+  }
+};
+
+const staggerChildrenVariant = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+// Enhanced product card variant
+const productCardVariant = {
+  hidden: { 
+    opacity: 0, 
+    y: 30 
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      duration: 0.5,
+      ease: "easeOut" 
+    } 
+  }
+};
+
+// Hover animation for product cards
+const cardHoverAnimation = {
+  scale: 1.03,
+  y: -8,
+  transition: {
+    duration: 0.3,
+    ease: "easeInOut"
+  }
+};
 
 const Home = () => {
   const [isAutoPlayEnabled, setIsAutoPlayEnabled] = useState(true);
@@ -104,9 +179,18 @@ const Home = () => {
     <div id="home" className="flex flex-col min-h-screen w-full mt-20">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl flex-grow">
         {/* Hero Section with Slider and Text */}
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12">
-          {/* Image Slider */}
-          <div className="w-full lg:w-3/5 relative">
+        <motion.div 
+          className="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          variants={fadeInVariant}
+        >
+          {/* Image Slider - Left side */}
+          <motion.div 
+            className="w-full lg:w-3/5 relative"
+            variants={slideInLeftVariant}
+          >
             <div 
               className="relative w-full overflow-hidden rounded-xl shadow-xl group"
               onMouseEnter={() => setIsAutoPlayEnabled(false)}
@@ -165,83 +249,149 @@ const Home = () => {
                 →
               </button>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Text Section */}
-          <div className="w-full lg:w-2/5 text-left bg-white p-6 sm:p-8 lg:p-10 rounded-lg shadow-lg relative z-10 lg:-ml-16 -mt-10 lg:mt-0 max-md:mt-6">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 sm:mb-6 ">
+          {/* Text Section - Right side */}
+          <motion.div 
+            className="w-full lg:w-2/5 text-left bg-white p-6 sm:p-8 lg:p-10 rounded-lg shadow-lg relative z-10 lg:-ml-16 -mt-10 lg:mt-0 max-md:mt-6"
+            variants={slideInRightVariant}
+          >
+            <motion.h2 
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-4 sm:mb-6"
+              variants={fadeInVariant}
+            >
               Our Story
-            </h2>
-            <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed">
+            </motion.h2>
+            <motion.p 
+              className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed"
+              variants={fadeInVariant}
+            >
               Coffee Kala is more than just a cafe; it's an aesthetic experience. We are dedicated to showcasing authenticity in every aspect, 
               from our menu to the ambiance. Join us to savor the perfect blend of flavors and creativity.
-            </p>
-          </div>
-        </div>
+            </motion.p>
+          </motion.div>
+        </motion.div>
 
         {/* Products Section */}
-        <div id="menu" className="mt-12 sm:mt-16 lg:mt-20 p-4 sm:p-6 lg:p-8">
+        <motion.div 
+          id="menu" 
+          className="sm:mt-16 lg:mt-20 p-4 sm:p-6 lg:p-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.2 }}
+          variants={fadeInVariant}
+        >
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col sm:flex-row items-left justify-between gap-4 mb-6 sm:mb-8">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium">Discover</h2>
-              <button 
+            <motion.div 
+              className="flex flex-col sm:flex-row items-left justify-between gap-4 mb-6 sm:mb-8"
+              variants={fadeInVariant}
+            >
+              <motion.h2 
+                className="text-3xl sm:text-4xl lg:text-5xl font-medium"
+                variants={slideInLeftVariant}
+              >
+                Discover
+              </motion.h2>
+              <motion.button 
                 onClick={() => navigate('/menu')}
                 className="px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors max-md:w-[150px]"
+                variants={slideInRightVariant}
               >
                 Explore More
-              </button>
-            </div>
-            <h2 className="text-xl sm:text-xl lg:text-2xl font-light">Best Sellers</h2>
+              </motion.button>
+            </motion.div>
+            <motion.h2 
+              className="text-xl sm:text-xl lg:text-2xl font-light"
+              variants={slideInLeftVariant}
+            >
+              Best Sellers
+            </motion.h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-20 lg:mt-4">
+            {/* Product Grid - Parent container with staggered children animation */}
+            <motion.div 
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-10 lg:gap-20 lg:mt-4"
+              variants={staggerChildrenVariant}
+            >
               {PRODUCTS.map((product, index) => (
-                <MemoizedTiltedCard
+                <motion.div
                   key={index}
-                  className="mx-auto sm:mx-0"
-                  imageSrc={product.imageSrc}
-                  altText={product.name}
-                  captionText={product.name}
-                  containerHeight="475px"
-                  containerWidth="100%"
-                  imageHeight="460px"
-                  imageWidth="100%"
-                  rotateAmplitude={8}
-                  scaleOnHover={1.1}
-                  showMobileWarning={false}
-                  showTooltip={true}
-                  displayOverlayContent={true}
-                  overlayContent={
-                    <p className="tilted-card-demo-text">
-                      {product.name}
-                    </p>
-                  }
-                />
+                  variants={productCardVariant}
+                  whileHover={cardHoverAnimation}
+                  className="transform-gpu"
+                >
+                  <MemoizedTiltedCard
+                    className="mx-auto sm:mx-0"
+                    imageSrc={product.imageSrc}
+                    altText={product.name}
+                    captionText={product.name}
+                    containerHeight="475px"
+                    containerWidth="100%"
+                    imageHeight="460px"
+                    imageWidth="100%"
+                    rotateAmplitude={8}
+                    scaleOnHover={1.1}
+                    showMobileWarning={false}
+                    showTooltip={true}
+                    displayOverlayContent={true}
+                    overlayContent={
+                      <motion.p 
+                        className="tilted-card-demo-text"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, transition: { delay: 0.1 } }}
+                      >
+                        {product.name}
+                      </motion.p>
+                    }
+                  />
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Customer Stories Section */}
-            <div className="mt-20 sm:mt-28 lg:mt-36 text-center "> 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 sm:mb-8 ">
+            <motion.div 
+              className="mt-20 sm:mt-28 lg:mt-36 text-center"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              variants={fadeInVariant}
+            > 
+              <motion.h2 
+                className="text-3xl sm:text-4xl lg:text-5xl font-medium text-neutral-900 mb-6 sm:mb-8"
+                variants={fadeInVariant}
+              >
                 Customer Stories
-              </h2>
-              <div className="flex flex-wrap justify-center mt-8">
+              </motion.h2>
+              <motion.div 
+                className="flex flex-wrap justify-center mt-8"
+                variants={staggerChildrenVariant}
+              >
                 {TESTIMONIALS.map((testimonial, index) => (
-                  <Testimonial
+                  <motion.div 
                     key={index}
-                    quote={testimonial.quote}
-                    name={testimonial.name}
-                    src={testimonial.src}
-                  />
+                    variants={productCardVariant}
+                  >
+                    <Testimonial
+                      quote={testimonial.quote}
+                      name={testimonial.name}
+                      src={testimonial.src}
+                    />
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Contact Us Section */}
-            <div className='mt-16 sm:mt-20 lg:mt-24'>
+            <motion.div 
+              className='mt-16 sm:mt-20 lg:mt-24'
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.2 }}
+              variants={fadeInVariant}
+            >
               <ContactUs/>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

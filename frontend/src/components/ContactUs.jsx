@@ -86,13 +86,13 @@ const ContactUs = () => {
               <div>
                 <h3 className="text-lg font-semibold text-gray-800 mb-2">Follow us:</h3>
                 <div className="">
-                  <a
-                    href="https://www.instagram.com/coffeekalajaipur/"
+                  <button
+                    
                     className="text-gray-500 hover:text-gray-700"
-                    onClick={(event) => event.preventDefault()}
+                    onClick={() => window.open("https://www.instagram.com/coffeekalajaipur/", "_blank")}
                   >
                     <FaInstagram size={18} />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

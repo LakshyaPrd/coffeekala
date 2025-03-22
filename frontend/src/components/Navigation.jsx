@@ -51,6 +51,15 @@ const Navigation = () => {
   const navigateToHero=()=>{
     navigate('/');
     closeMenu();
+
+  }
+  const navigateToMenu=()=>{
+    navigate('/menu');
+    closeMenu();
+  }
+  const navigateToGallery=()=>{
+    navigate('/gallery');
+    closeMenu();
   }
   return (
     <nav className="bg-[#5C3623] mt-9 mx-4 sm:mx-6 md:mx-auto h-12 flex items-center px-4 sm:px-6 rounded-full text-xs text-white relative w-auto md:max-w-[1100px] md:h-15">
@@ -109,25 +118,45 @@ const Navigation = () => {
       {isMobileMenuOpen && (
         <div
           ref={menuRef}
-          className="absolute top-13 left-5 w-32 bg-[#5C3623] text-white flex flex-col items-center space-y-4 py-4 rounded-b-lg md:hidden"
+          className="absolute top-13 left-5 w-32 bg-[#5C3623] text-white flex flex-col items-center space-y-4 py-4 rounded-b-lg md:hidden z-50"
         >
+          <button 
+            className="hover:text-gray-400" 
+            onClick={navigateToHome}
+          >
+            HOME
+          </button>
           <button 
             className="hover:text-gray-400" 
             onClick={navigateToAbout}
           >
             ABOUT
           </button>
-          <a href="#" className="hover:text-gray-400" onClick={closeMenu}>
+          <button 
+            className="hover:text-gray-400" 
+            onClick={navigateToMenu}
+          >
             MENU
-          </a>
-          <a href="#" className="hover:text-gray-400" onClick={closeMenu}>
+          </button>
+          <button 
+            className="hover:text-gray-400" 
+            onClick={navigateToGallery}
+          >
             GALLERY
+          </button>
+          <button 
+            className="hover:text-gray-400" 
+            onClick={navigateToReviews}
+          >
+            REVIEWS
+          </button>
+          <a 
+            href="#contact" 
+            className="hover:text-gray-400"
+            onClick={closeMenu}
+          >
+            CONTACT US
           </a>
-          <button onClick={navigateToReservation} className="hover:text-gray-400">RESERVATION</button>
-          <a href="#" className="hover:text-gray-400" onClick={closeMenu}>
-            OFFERS
-          </a>
-          
         </div>
       )}
     </nav>
