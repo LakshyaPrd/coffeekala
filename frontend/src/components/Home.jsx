@@ -121,6 +121,21 @@ const cardHoverAnimation = {
   }
 };
 
+const MobileScrollMessage = () => {
+  // Only show this on mobile devices
+  return (
+    <div className="bg-amber-100 border-l-4 border-amber-500 text-amber-700 p-4 mb-4 fixed bottom-0 left-0 right-0 z-50 text-center md:hidden">
+      <p className="font-medium">Please scroll from empty spaces, not images</p>
+      <button 
+        className="text-xs underline mt-1"
+        onClick={() => document.querySelector('.mobile-scroll-message')?.remove()}
+      >
+        Got it
+      </button>
+    </div>
+  );
+};
+
 const Home = () => {
   const [isAutoPlayEnabled, setIsAutoPlayEnabled] = useState(true);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -405,6 +420,10 @@ const Home = () => {
             </motion.div>
           </div>
         </motion.div>
+      </div>
+
+      <div className="mobile-scroll-message md:hidden">
+        <MobileScrollMessage />
       </div>
     </div>
   );
