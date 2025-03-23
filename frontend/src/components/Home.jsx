@@ -175,6 +175,18 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [currentImageIndex, isAutoPlayEnabled]);
 
+  useEffect(() => {
+    const handleTouchStart = (e) => {
+      console.log("Touch started on:", e.target);
+    };
+    
+    document.addEventListener('touchstart', handleTouchStart);
+    
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+    };
+  }, []);
+
   return (
     <div id="home" className="flex flex-col min-h-screen w-full mt-20">
       <div className="container mx-auto px-4 lg:px-8 max-w-7xl flex-grow">
@@ -208,13 +220,14 @@ const Home = () => {
                 }}
               >
                 {IMAGES.map((img, index) => (
-                  <img
+                  <motion.img
                     key={index}
                     src={img}
                     alt={`Coffee Kala ${index + 1}`}
                     className="flex-none w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[650px] object-cover snap-start touch-pan-y"
-                    style={{ minWidth: '100%' }}
-                    loading={index === 0 ? "eager" : "lazy"}
+                    style={{ minWidth: '100%', touchAction: "pan-y", userSelect: "none" }}
+                    loading={index === 0 ? "eager" : "lazy" }
+                    drag={false}
                   />
                 ))}
               </div>

@@ -18,3 +18,23 @@
     -webkit-user-select: none;
     user-select: none;
   }
+
+  * {
+    touch-action: pan-y;
+  }
+
+  img, 
+  .image-container, 
+  .motion-container {
+    pointer-events: none !important;
+  }
+
+  /* Only enable pointer events on specific interactive elements */
+  button, 
+  a, 
+  input, 
+  textarea, 
+  select,
+  .clickable {
+    pointer-events: auto !important;
+  }
