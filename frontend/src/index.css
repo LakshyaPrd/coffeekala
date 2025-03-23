@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @theme {
@@ -11,4 +10,11 @@
   
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-raleway);
+  }
+
+  .scrollable-container img,
+  .scrollable-container .interactive-element {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
   }
