@@ -212,7 +212,7 @@ const Home = () => {
                     key={index}
                     src={img}
                     alt={`Coffee Kala ${index + 1}`}
-                    className="flex-none w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[650px] object-cover snap-start"
+                    className="flex-none w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[650px] object-cover snap-start touch-pan-y"
                     style={{ minWidth: '100%' }}
                     loading={index === 0 ? "eager" : "lazy"}
                   />
