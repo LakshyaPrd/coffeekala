@@ -188,6 +188,9 @@ const StarRating = ({ rating, setRating }) => {
   );
 };
 
+// Add this near the top of your component, outside the Reviews function
+const IS_ADMIN_MODE = false; // Set to true only when you need admin functions
+
 const Reviews = () => {
   // State for new review form
   const [name, setName] = useState('');
@@ -504,22 +507,24 @@ const Reviews = () => {
           <ContactUs />
         </motion.div>
 
-        {/* Admin Functions */}
-        <div className="mt-8 border-t pt-4 text-sm text-gray-500">
-          <p>Admin Functions:</p>
-          <button onClick={exportReviews} className="text-amber-700 underline mr-4">
-            Export Reviews
-          </button>
-          <label className="text-amber-700 underline cursor-pointer">
-            Import Reviews
-            <input
-              type="file"
-              accept=".json"
-              className="hidden"
-              onChange={importReviews}
-            />
-          </label>
-        </div>
+        {/* Admin Functions - only visible when IS_ADMIN_MODE is true */}
+        {IS_ADMIN_MODE && (
+          <div className="mt-8 border-t pt-4 text-sm text-gray-500">
+            <p>Admin Functions:</p>
+            <button onClick={exportReviews} className="text-amber-700 underline mr-4">
+              Export Reviews
+            </button>
+            <label className="text-amber-700 underline cursor-pointer">
+              Import Reviews
+              <input
+                type="file"
+                accept=".json"
+                className="hidden"
+                onChange={importReviews}
+              />
+            </label>
+          </div>
+        )}
       </div>
     </div>
   );
