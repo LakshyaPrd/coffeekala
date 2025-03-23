@@ -272,7 +272,6 @@ const Reviews = () => {
     }, 1000);
   };
 
-  // Filter reviews by rating
   const filteredReviews = filter === 'all' 
     ? reviews 
     : reviews.filter(review => review.rating === parseInt(filter));
