@@ -15,7 +15,6 @@ const fadeInVariant = {
   }
 };
 
-// Left-side animation variant
 const slideInLeftVariant = {
   hidden: { opacity: 0, x: -100 },
   visible: { 
