@@ -294,6 +294,34 @@ const Reviews = () => {
     }, 100);
   };
 
+  // Add these functions to your Reviews component
+  const exportReviews = () => {
+    const reviews = localStorage.getItem('cafeReviews');
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(reviews);
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "coffee_kala_reviews.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  };
+
+  const importReviews = (event) => {
+    const fileReader = new FileReader();
+    fileReader.readAsText(event.target.files[0], "UTF-8");
+    fileReader.onload = e => {
+      try {
+        const reviews = JSON.parse(e.target.result);
+        setReviews(reviews);
+        localStorage.setItem('cafeReviews', JSON.stringify(reviews));
+        alert("Reviews imported successfully!");
+      } catch (error) {
+        console.error("Error importing reviews:", error);
+        alert("Error importing reviews. Please check the file format.");
+      }
+    };
+  };
+
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -476,6 +504,23 @@ const Reviews = () => {
         >
           <ContactUs />
         </motion.div>
+
+        {/* Admin Functions */}
+        <div className="mt-8 border-t pt-4 text-sm text-gray-500">
+          <p>Admin Functions:</p>
+          <button onClick={exportReviews} className="text-amber-700 underline mr-4">
+            Export Reviews
+          </button>
+          <label className="text-amber-700 underline cursor-pointer">
+            Import Reviews
+            <input
+              type="file"
+              accept=".json"
+              className="hidden"
+              onChange={importReviews}
+            />
+          </label>
+        </div>
       </div>
     </div>
   );
