@@ -13,7 +13,7 @@ const TESTIMONIALS = [
     iconColor: "text-amber-500",
     iconType: "user-circle", // Type of icon to use
     rating: 5,
-    date: "March 15, 2023"
+    date: "March 15, 2025"
   },
   {
     quote: "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
@@ -21,7 +21,7 @@ const TESTIMONIALS = [
     iconColor: "text-blue-500",
     iconType: "user-tie",
     rating: 4,
-    date: "April 22, 2023"
+    date: "February 22, 2025"
   },
   {
     quote: "This solution has significantly improved our team's productivity. The intuitive interface makes complex tasks simple.",
@@ -29,7 +29,7 @@ const TESTIMONIALS = [
     iconColor: "text-green-500",
     iconType: "user-star",
     rating: 5,
-    date: "January 10, 2023"
+    date: "January 10, 2025"
   },
   {
     quote: "The coffee here is absolutely divine! The ambiance creates the perfect setting for both work and relaxation.",
@@ -37,7 +37,7 @@ const TESTIMONIALS = [
     iconColor: "text-purple-500",
     iconType: "user-heart",
     rating: 5,
-    date: "May 5, 2023"
+    date: "December 5, 2024"
   },
   {
     quote: "Their signature blend is worth every penny. I've become a regular since my first visit.",
@@ -45,7 +45,7 @@ const TESTIMONIALS = [
     iconColor: "text-red-500",
     iconType: "user-ninja",
     rating: 4,
-    date: "June 18, 2023"
+    date: "June 18, 2025"
   }
 ];
 
@@ -206,12 +206,20 @@ const Reviews = () => {
 
   // Load reviews from localStorage on initial render
   useEffect(() => {
-    // Try to get saved reviews from localStorage
+    // Add this check to make sure we don't override localStorage if it already has data
     const savedReviews = localStorage.getItem('cafeReviews');
     
     if (savedReviews) {
-      // If we have saved reviews, use them
-      setReviews(JSON.parse(savedReviews));
+      try {
+        // If we have saved reviews, use them
+        const parsedReviews = JSON.parse(savedReviews);
+        setReviews(parsedReviews);
+      } catch (error) {
+        console.error('Error parsing saved reviews:', error);
+        // If there's an error parsing, use default testimonials
+        setReviews(TESTIMONIALS);
+        localStorage.setItem('cafeReviews', JSON.stringify(TESTIMONIALS));
+      }
     } else {
       // Otherwise, use the default testimonials and save to localStorage
       setReviews(TESTIMONIALS);
@@ -219,9 +227,10 @@ const Reviews = () => {
     }
   }, []);
 
-  // Save reviews to localStorage whenever they change
+  // Save reviews to localStorage whenever they change - make sure this works properly
   useEffect(() => {
-    if (reviews.length > 0) {
+    // Only save if we actually have reviews to save and they're not empty
+    if (reviews && reviews.length > 0) {
       localStorage.setItem('cafeReviews', JSON.stringify(reviews));
     }
   }, [reviews]);
@@ -267,12 +276,6 @@ const Reviews = () => {
   const filteredReviews = filter === 'all' 
     ? reviews 
     : reviews.filter(review => review.rating === parseInt(filter));
-
-  // Add a reset function for testing or clearing all reviews
-  const resetAllReviews = () => {
-    setReviews(TESTIMONIALS);
-    localStorage.setItem('cafeReviews', JSON.stringify(TESTIMONIALS));
-  };
 
   // Handle filter change with scroll adjustment
   const handleFilterChange = (e) => {
@@ -473,16 +476,6 @@ const Reviews = () => {
         >
           <ContactUs />
         </motion.div>
-
-        {/* Optionally add an admin control for resetting reviews */}
-        <div className="text-center text-sm text-gray-500 mt-16">
-          <button 
-            onClick={resetAllReviews}
-            className="underline hover:text-amber-700 transition-colors"
-          >
-            Reset to Default Reviews
-          </button>
-        </div>
       </div>
     </div>
   );

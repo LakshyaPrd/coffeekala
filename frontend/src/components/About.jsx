@@ -79,7 +79,7 @@ const About = () => {
               The Coffee Kala
             </motion.h1>
             <motion.h1 
-              className="text-5xl font-medium bg-gradient-to-r from-amber-800 via-amber-700 to-amber-900 bg-clip-text text-transparent mb-8"
+              className="text-3xl md:text-5xl font-medium bg-gradient-to-r from-amber-800 via-amber-700 to-amber-900 bg-clip-text text-transparent mb-8"
               variants={fadeInVariant}
             >
               Journey

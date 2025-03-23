@@ -61,6 +61,10 @@ const Navigation = () => {
     navigate('/gallery');
     closeMenu();
   }
+  const navigateToContact=()=>{
+    navigate('/contactus');
+    closeMenu();
+  }
   return (
     <nav className="bg-[#5C3623] mt-9 mx-4 sm:mx-6 md:mx-auto h-12 flex items-center px-4 sm:px-6 rounded-full text-xs text-white relative w-auto md:max-w-[1100px] md:h-15">
       {/* Hamburger Menu for Small Screens */}
@@ -109,9 +113,9 @@ const Navigation = () => {
       
         
         
-        <a href="#contact" className="hover:text-gray-400">
+        <button onClick={navigateToContact} className="hover:text-gray-400">
           CONTACT US
-        </a>
+        </button>
       </div>
 
       {/* Mobile Dropdown Menu */}
@@ -150,13 +154,13 @@ const Navigation = () => {
           >
             REVIEWS
           </button>
-          <a 
-            href="#contact" 
+          <button 
+            onClick={navigateToContact}
             className="hover:text-gray-400"
-            onClick={closeMenu}
+            
           >
             CONTACT US
-          </a>
+          </button>
         </div>
       )}
     </nav>
