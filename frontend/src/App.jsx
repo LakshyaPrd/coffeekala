@@ -49,7 +49,7 @@ const LoadingScreen = () => (
         <div className="absolute w-2 h-10 bg-amber-800/40 rounded-full bottom-24 left-[60%] transform -translate-x-1/2 animate-steam2"></div>
       </div>
       
-      <h2 className="text-amber-900 text-2xl font-bold mb-6">The coffee is brewing...</h2>
+      <h2 className="text-amber-900 text-2xl font-bold mb-6">Your coffee is brewing...</h2>
       
       <div className="relative w-64 h-3 bg-amber-900/30 rounded-full overflow-hidden">
         <div className="absolute top-0 left-0 h-full bg-amber-500 rounded-full animate-progress"></div>
