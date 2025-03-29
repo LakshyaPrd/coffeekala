@@ -9,7 +9,9 @@ const Navigation = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    
+    if (isMobileMenuOpen) {
+      closeMenu();
+    }
   };
 
   const closeMenu = () => {
