@@ -5,13 +5,12 @@ import logo from "../assets/Logo.png";
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const buttonRef = useRef(null);
   const navigate = useNavigate();
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    if (isMobileMenuOpen) {
-      closeMenu();
-    }
+  const toggleMobileMenu = (e) => {
+    e.stopPropagation();
+    setIsMobileMenuOpen(prev => !prev);
   };
 
   const closeMenu = () => {
@@ -20,7 +19,8 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      if (menuRef.current && !menuRef.current.contains(event.target) && 
+          buttonRef.current && !buttonRef.current.contains(event.target)) {
         closeMenu();
       }
     };
@@ -73,10 +73,11 @@ const Navigation = () => {
       {/* Hamburger Menu for Small Screens */}
       <div className="md:hidden flex items-center">
         <button
+          ref={buttonRef}
           onClick={toggleMobileMenu}
           className="text-white text-2xl focus:outline-none"
         >
-          ☰ {/* Replace with an icon if desired */}
+          ☰
         </button>
       </div>
 
