@@ -329,7 +329,7 @@ const Home = () => {
               </motion.button>
             </motion.div>
             <motion.h2 
-              className="text-xl sm:text-xl lg:text-2xl font-light"
+              className="text-xl sm:text-xl lg:text-2xl font-light mb-12 max-md:mb-8"
               variants={slideInLeftVariant}
             >
               Best Sellers
