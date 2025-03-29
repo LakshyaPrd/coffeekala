@@ -127,7 +127,7 @@ export default function TiltedCard({
       </figure>
 
       {displayOverlayContent && overlayContent && (
-        <div className="mt-2 w-full px-2">
+        <div className="mt-6 w-full px-2 max-md:mt-6">
           {overlayContent}
         </div>
       )}
