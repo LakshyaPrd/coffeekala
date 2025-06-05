@@ -322,7 +322,7 @@ const Home = () => {
               </motion.h2>
               <motion.button 
                 onClick={() => navigate('/menu')}
-                className="px-4 sm:px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors max-md:w-[150px]"
+                className="px-4 sm:px-6 py-2 bg-amber-700 text-white rounded-lg hover:bg-amber-800 transition-colors max-md:w-[150px]"
                 variants={slideInRightVariant}
               >
                 Explore More

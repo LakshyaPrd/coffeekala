@@ -35,39 +35,35 @@ const Navigation = () => {
     navigate('/about');
     closeMenu();
   };
-  const navigateToReservation=()=>{
+  const navigateToReservation = () => {
     navigate('/reservation');
     closeMenu();
   }
-  const navigateToHome=()=>{
+  const navigateToHome = () => {
     navigate('/home');
     closeMenu();
   }
-  const naviagteToGallery=()=>{
+  const navigateToGallery = () => {
     navigate('/gallery');
     closeMenu();
   }
-  const navigateToReviews=()=>{
+  const navigateToReviews = () => {
     navigate('/reviews');
     closeMenu();
   }
-  const navigateToHero=()=>{
+  const navigateToHero = () => {
     navigate('/');
     closeMenu();
-
   }
-  const navigateToMenu=()=>{
+  const navigateToMenu = () => {
     navigate('/menu');
     closeMenu();
   }
-  const navigateToGallery=()=>{
-    navigate('/gallery');
-    closeMenu();
-  }
-  const navigateToContact=()=>{
+  const navigateToContact = () => {
     navigate('/contactus');
     closeMenu();
   }
+
   return (
     <nav className="bg-[#5C3623] mt-9 mx-4 sm:mx-6 md:mx-auto h-12 flex items-center px-4 sm:px-6 rounded-full text-xs text-white relative w-auto md:max-w-[1100px] md:h-15">
       {/* Hamburger Menu for Small Screens */}
@@ -83,7 +79,7 @@ const Navigation = () => {
 
       {/* Left Section */}
       <div className="hidden md:flex space-x-15 pl-20">
-      <button 
+        <button 
           onClick={navigateToHome} 
           className="hover:text-gray-400"
         >
@@ -95,10 +91,9 @@ const Navigation = () => {
         >
           ABOUT
         </button>
-        <button className="hover:text-gray-400" onClick={() => navigate('/menu')}>
+        <button className="hover:text-gray-400" onClick={navigateToMenu}>
           MENU
         </button>
-        
       </div>
 
       {/* Center Section with Logo */}
@@ -110,13 +105,12 @@ const Navigation = () => {
 
       {/* Right Section */}
       <div className="hidden md:flex space-x-15 ml-auto items-center pr-20">
-        <button onClick={naviagteToGallery} className="hover:text-gray-400">
+        <button onClick={navigateToGallery} className="hover:text-gray-400">
           GALLERY
         </button>
-      <button onClick={navigateToReviews} className="hover:text-gray-400">REVIEWS</button>
-      
-        
-        
+        <button onClick={navigateToReviews} className="hover:text-gray-400">
+          REVIEWS
+        </button>
         <button onClick={navigateToContact} className="hover:text-gray-400">
           CONTACT US
         </button>
@@ -161,7 +155,6 @@ const Navigation = () => {
           <button 
             onClick={navigateToContact}
             className="hover:text-gray-400"
-            
           >
             CONTACT US
           </button>
